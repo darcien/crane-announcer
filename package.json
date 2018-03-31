@@ -13,6 +13,7 @@
     "test": "npm run lint && npm run typecheck && npm run test-src"
   },
   "dependencies": {
+    "discord.js": "^11.3.2",
     "feedparser": "^2.2.9",
     "node-fetch": "^2.1.2"
   },
