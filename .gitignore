@@ -1,6 +1,8 @@
-
 /flow-typed/npm
 /lib
 /node_modules
 npm-debug.log
 .DS_STORES
+
+# Exclude the bot config
+src/config/config.json
