@@ -32,6 +32,10 @@ client.on('message', (message) => {
 
   let command = client.commands.get(commandName);
 
+  if (command.guildOnly && message.channel.type !== 'text') {
+    return message.reply("Stop that, it's server specific command.");
+  }
+
   if (command.args && !args.length) {
     return message.channel.send(`No arguments given, ${message.author}.`);
   }
