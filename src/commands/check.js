@@ -3,6 +3,10 @@
 import FeedParser from 'feedparser';
 import request from 'request';
 
+import {owner} from '../config/config.json';
+
+import PostedArticleModel from '../models/PostedArticleModel';
+
 import type {Message} from 'discord.js';
 
 let url = 'https://www.craneanime.com/wp/feed/atom';
@@ -12,21 +16,42 @@ export default {
   description: 'Check the atom feed',
   guildOnly: true,
   execute(message: Message) {
-    if (message.author.id !== '202538693582389248') {
+    if (message.author.id !== owner) {
       return;
     }
 
-    checkFeed(url).then((result) => {
-      // console.log('Result', result);
-
-      for (let article of result) {
-        // let props = Object.keys(article).join(', ');
-        message.channel.send(`Article: ${article.link} `);
+    message.channel.send('Checking feed...').then((sentMessage) => {
+      if (Array.isArray(sentMessage)) {
+        return;
       }
 
-      message.channel.send('Done');
+      sentMessage.delete(3000);
     });
-    message.channel.send('Checking...');
+
+    checkFeed(url).then(async(result) => {
+      let newArticles = [];
+
+      for (let article of result) {
+        let {guid, title, link, date} = article;
+
+        let postedArticle = await PostedArticleModel.findOne({guid});
+
+        if (postedArticle) {
+          continue;
+        }
+
+        newArticles.push(article);
+
+        message.channel.send(`Article,
+        guid = ${guid}
+        title = ${title}
+        link = ${link}
+        date = ${date}
+         `);
+      }
+
+      message.react('✅');
+    });
   },
 };
 

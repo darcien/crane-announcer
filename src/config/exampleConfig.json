@@ -1,4 +1,6 @@
 {
+  "connection": "mongodb-uri",
+  "owner": "owner-id",
   "prefix": "l!",
-  "token": "token-here"
+  "token": "bot-token"
 }
