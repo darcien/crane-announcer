@@ -1,8 +1,25 @@
-/flow-typed/npm
-/lib
-/node_modules
-npm-debug.log
-.DS_STORES
-
 # Exclude the bot config
 src/config/config.json
+
+# Log files
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directory
+node_modules
+
+# Ignore build files
+lib
+public
+.idea
+
+# Flow-typed
+flow-typed/npm
+
+# OSX artifact
+.DS_STORES

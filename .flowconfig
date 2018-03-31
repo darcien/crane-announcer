@@ -5,6 +5,7 @@
 [include]
 
 [libs]
+./flow-typed/npm/
 
 [options]
 esproposal.class_static_fields=enable
