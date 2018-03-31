@@ -1,10 +1,5 @@
 // @flow
 
-import check from './check';
-import ping from './ping';
-
-export {
-  // Sort here
-  check,
-  ping,
-};
+export {default as about} from './about';
+export {default as check} from './check';
+export {default as ping} from './ping';
