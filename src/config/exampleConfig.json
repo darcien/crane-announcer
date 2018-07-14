@@ -1,5 +1,4 @@
 {
-  "connection": "mongodb-uri",
   "owner": "owner-id",
   "prefix": "l!",
   "token": "bot-token"

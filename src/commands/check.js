@@ -5,8 +5,6 @@ import request from 'request';
 
 import {owner} from '../config/config.json';
 
-import PostedArticleModel from '../models/PostedArticleModel';
-
 import type {Message} from 'discord.js';
 
 let url = 'https://www.craneanime.com/wp/feed/atom';
@@ -33,12 +31,6 @@ export default {
 
       for (let article of result) {
         let {guid, title, link, date} = article;
-
-        let postedArticle = await PostedArticleModel.findOne({guid});
-
-        if (postedArticle) {
-          continue;
-        }
 
         newArticles.push(article);
 

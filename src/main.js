@@ -1,15 +1,11 @@
 import * as Discord from 'discord.js';
-import mongoose from 'mongoose';
 
-import {connection, prefix, token} from './config/config.json';
+import {prefix, token} from './config/config.json';
 
 import * as commandFiles from './commands';
 
 let client = new Discord.Client();
 client.commands = new Discord.Collection();
-
-mongoose.connect(connection);
-mongoose.Promise = global.Promise;
 
 for (let file in commandFiles) {
   if (commandFiles.hasOwnProperty(file)) {
