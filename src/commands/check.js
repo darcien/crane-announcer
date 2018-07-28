@@ -7,7 +7,7 @@ import {owner} from '../config/config.json';
 
 import type {Message} from 'discord.js';
 
-let url = 'https://www.craneanime.com/wp/feed/atom';
+let url = 'https://xkcd.com/atom.xml';
 
 export default {
   name: 'check',
@@ -19,16 +19,11 @@ export default {
     }
 
     message.channel.send('Checking feed...').then((sentMessage) => {
-      if (Array.isArray(sentMessage)) {
-        return;
-      }
-
       sentMessage.delete(3000);
     });
 
-    checkFeed(url).then(async(result) => {
+    checkFeed(url).then((result) => {
       let newArticles = [];
-
       for (let article of result) {
         let {guid, title, link, date} = article;
 
