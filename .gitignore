@@ -1,5 +1,6 @@
 # Exclude the bot config
 src/config/config.json
+src/.DS_Store
 
 # Log files
 logs
@@ -22,4 +23,4 @@ public
 flow-typed/npm
 
 # OSX artifact
-.DS_STORES
+.DS_STORE
